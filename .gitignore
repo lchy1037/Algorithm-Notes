@@ -1,2 +1,5 @@
 # ignore Test-code dir
 Test-code/
+
+# ignore dir related to vscode
+.vscode/ 
