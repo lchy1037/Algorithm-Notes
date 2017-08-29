@@ -1,23 +1,22 @@
 #include <iostream>
 #include <vector>
-#include <string>
 using namespace std;
 
-int MaxSubSum(vector<int>& vec){
-    if (vec.size() < 1) return 0;
-    int maxSum = vec[0];
-    int currSum = 0;
-    for (int i = 0; i < vec.size(); ++i){
-        currSum = (currSum + vec[i] > vec[i]) ? (currSum + vec[i]) : vec[i];
-        maxSum = (currSum > maxSum) ? currSum : maxSum;
+int jumpStep(int n){
+    if (n < 1) return 0;
+    if (n == 1 || n == 2) return n;
+    int a = 1, b = 2, c;
+    for (int i = 3; i <= n; ++i){
+        c = a + b;
+        a = b;
+        b = c;
     }
-    return maxSum;
+    return c;
 }
 
 int main(int argc, char** argv){
-    int arr[] = {9, 1, 4, -1, -10, 8};
-    int n = sizeof(arr)/sizeof(int);
-    vector<int> vec(arr, arr+n);
-    cout << MaxSubSum(vec) << endl;
+    int n;
+    cin >> n;
+    cout << jumpStep(n) << endl;
     return 1;
 }
